@@ -73,22 +73,21 @@ function tabHandler(element){
     element.value = convertHoursFromHHMM(element.value);
 }
 
+// Adding hooks for time conversion from HH:MM to decimal parts
 function addE(){
     try{
-        for (var i = 0; i < 10; ++i){
+        for (var i = 0; i < 1; ++i){
             for (var j = 1; j < 8; ++j){
-               	var id = "b_s89_g89s90_row"+i+"_reg_value" + j +"_i";
+               	var id = "b_s89_g89s90_row0_reg_value" + j +"_i";
                 var element = content.frames[1].document.getElementById(id);
-                // Where is $i at the end?
-                element.onblur = function(event){ResetTextBox(this, 'b$s89$g89s90$row'+i+'$reg_value' + j, false, false, 'white');
+                element.onblur = function(event){ResetTextBox(this, id, false, false, 'white');
                                             tabHandler(this)};
-                //Works without +i+, wtf?
-                element.onkeypress = function(event){DoubleMask(event,'b$s89$g89s90$row0$reg_value'+j+'$i','(^-?\\d{0,4}$)|(^-?\\d{0,4}\\.{1}\\d{0,2}$)|(^-?((\\d{0,3}\\,{1}\\d{0,3})+)$)|(^-?((\\d{0,3}\\,{1}\\d{0,3})+)\\.{1}\\d*$)',false);};
+                element.onkeypress = function(event){DoubleMask(event,id,'(^-?\\d{0,4}$)|(^-?\\d{0,4}\\.{1}\\d{0,2}$)|(^-?\\d{0,4}\\:{1}\\d{0,2}$)|(^-?((\\d{0,3}\\,{1}\\d{0,3})+)$)|(^-?((\\d{0,3}\\,{1}\\d{0,3})+)\\.{1}\\d*$)',false);};
 //                element.onkeypress = function(event){DoubleMask(event,'b$s89$g89s90$row'+i+'$reg_value'+j,'(^-?\\d{0,4}$)|(^-?\\d{0,4}\\.{1}\\d{0,2}$)|(^-?((\\d{0,3}\\,{1}\\d{0,3})+)$)|(^-?((\\d{0,3}\\,{1}\\d{0,3})+)\\.{1}\\d*$)',false);};
             }
         }
     } catch(e) {
-	    alert(e);
+	    //alert(e);
     }
 }
 
