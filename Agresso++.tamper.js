@@ -5,6 +5,7 @@
 // @match      htt*://agresso-prod/*
 // ==/UserScript==
 
+// Converting flex time to a user friendly format (Working hours area)
 for (var i=1;i<9;i++)
 {
 	var id = "b_s95_g95s96__sumRow_normal_hrs" + i;
@@ -22,6 +23,21 @@ for (var i=1;i<9;i++)
         } else if (value > 0) {
             element.style.color="red";
         }
+    }catch (e){
+        //alert(id);
+    }
+}
+
+// Converting flex time to a user friendly format (Time entry area)
+for (var i=1;i<9;i++)
+{
+	var id = "b_s89_g89s90__sumRow_reg_value" + i;
+    try {
+        var element = content.frames[1].document.getElementById(id).childNodes[0];
+        //	var element = window.frames[1].document.getElementById(id).childNodes[0];
+        var value = parseFloat(element.innerHTML);
+        var newValue = convertHoursToHHMM(value<0?-value:value);
+        element.innerHTML=newValue;
     }catch (e){
         //alert(id);
     }
