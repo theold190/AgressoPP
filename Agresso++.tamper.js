@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name       Agresso++
-// @version    0.2
+// @version    0.3
 // @description  Tries to improve user experience while working with time reporting of Agresso system
 // @match      htt*://agresso-prod/*
 // ==/UserScript==
@@ -56,7 +56,7 @@ function convertHoursToHHMM(time){
 }
 
 function convertHoursFromHHMM(time){
-    var x = (time + '').split(/[:+]/);
+    var x = (time + '').split(/[:]/);
     if (x.length !== 2){
         return time;
     }
