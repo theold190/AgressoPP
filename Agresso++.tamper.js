@@ -73,8 +73,11 @@ function tabHandler(element){
     element.value = convertHoursFromHHMM(element.value);
 }
 
+var updated = false;
+
 // Adding hooks for time conversion from HH:MM to decimal parts
 function addE(){
+   	if (updated) return;
     try{
         for (var i = 0; i < 1; ++i){
             for (var j = 1; j < 8; ++j){
@@ -89,6 +92,7 @@ function addE(){
     } catch(e) {
 	    //alert(e);
     }
+    updated = true;
 }
 
 //content.frames[1].document.onkeydown = function(e){tabHandler(e)};
