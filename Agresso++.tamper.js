@@ -46,7 +46,7 @@ for (var i=1;i<9;i++)
 function convertHoursToHHMM(time){
     var x = (parseFloat(time).toFixed(2) + '').split(/[,.]/);
 
-    var minutes = parseInt(+x[1] * 60/100);
+    var minutes = parseInt(+x[1] * 60/100 + 0.5);
 
     if (minutes < 10) {
     	return x[0] + ':0' + minutes;
